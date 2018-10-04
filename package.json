@@ -1,0 +1,19 @@
+{
+  "name": "memory",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "git+https://github.com/derek1331/memory.git",
+  "author": "Derek Reed <1331derek@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/derek1331/memory/issues"
+  },
+  "homepage": "https://github.com/derek1331/memory#readme",
+  "dependencies": {
+    "yarn": "^1.10.1"
+  }
+}

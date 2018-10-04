@@ -1,0 +1,13 @@
+.title {
+  width: 100%;
+  font-size: 2rem;
+  padding: 2rem;
+}
+
+
+.title-backround{
+  background-color: aquamarine;
+  padding: 100px 20px;
+  padding-bottom: 20px;
+  text-align: center;
+}

@@ -1,0 +1,22 @@
+.card {
+  background: #fff;
+  margin: 1rem;
+  position: relative;
+  height: 170px;
+  width: 170px;
+  border-color: blue;
+  border-width: 10px;
+  border-style: dashed;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23);
+}
+
+
+
+
+.card > .remove:hover {
+  color: #d50000;
+}
+
+
+
