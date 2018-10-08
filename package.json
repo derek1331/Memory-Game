@@ -4,9 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "yarn start"
-  
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": "git+https://github.com/derek1331/memory.git",
   "author": "Derek Reed <1331derek@gmail.com>",
