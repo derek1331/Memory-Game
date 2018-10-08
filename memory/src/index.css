@@ -3,14 +3,16 @@
   font-family: sans-serif;
 }
 
-html, body, #root {
+html,
+body,
+#root {
   padding: 0;
   margin: 0;
   height: 100%;
-  
-}
-html{
-  overflow-y: scroll;
+
 }
 
+html {
+  overflow-y: scroll;
+}
 

@@ -5,19 +5,19 @@ import Title from "./components/Title";
 import friends from "./friends.json";
 import Nav from "./components/Nav"
 import CardConatainer from "./components/CardContainer"
+import Footer from "./components/Footer";
 import './index.css';
 
 let score = 0;
 let topScore = 0;
 let clicked = [];
 
-
 const reset = function(){
   score = 0;
   clicked = [];
 }
 
-const shuffle = function(array) {
+const shuffleCards = function(array) {
   var currentIndex = array.length, temporaryValue, randomIndex;
 
   // While there remain elements to shuffle...
@@ -36,27 +36,72 @@ const shuffle = function(array) {
   return array;
 }
 
+const navInstructions = function() {
+  
+  const instructions = document.getElementsByClassName("titleBackground")[0];
+  const container = document.getElementsByClassName("container")[0];
+  const navLink = document.getElementsByClassName("navInstructions")[0];
+
+
+  if(instructions.style.display === "inherit"){
+    instructions.style.display = "none";
+    container.style.padding = "100px 100px 0px 100px";
+    navLink.style.color = "white"
+
+  } else {
+    instructions.style.display = "inherit";
+    container.style.padding = "0px 100px 0px 100px";
+    navLink.style.color = "darkgoldenrod"
+
+  }
+
+}
+
+const hide = () => {
+
+  const instructions = document.getElementsByClassName("titleBackground")[0];
+  const container = document.getElementsByClassName("container")[0];
+  const navLink = document.getElementsByClassName("navInstructions")[0];
+
+
+  if(instructions.style.display === "inherit"){
+    instructions.style.display = "none";
+    container.style.padding = "100px 100px 0px 100px";
+    navLink.style.color = "white"
+
+  } 
+}
+
 class App extends Component { 
 
 
 
   state = {
-    friends: shuffle(friends)
+    friends: shuffleCards(friends)
   };
 
-  removeFriend = id => {
+  gamePlay = id => {
 
-    const finder = clicked.find(function(element){
+    const correctIncorrect = document.getElementsByClassName('correctIncorrect')[0];
+
+
+    const alreadyClicked = clicked.find(function(element){
       return element === id;
     })
 
-    // console.log(finder)
+    // console.log(alreadyClicked)
 
     clicked.push(id);
     
-    if(id === finder){
+    if(id === alreadyClicked){
       
-      this.setState({ friends: shuffle(friends) });
+      correctIncorrect.textContent = "Ha you're an idiot!!!";
+      correctIncorrect.classList.add("incorrect");
+      setTimeout(function () {
+        correctIncorrect.classList.remove("incorrect");
+      },300);
+
+      this.setState({ friends: shuffleCards(friends) });
       reset();
       console.log(clicked)
     } else {
@@ -64,12 +109,17 @@ class App extends Component {
     score++;
     
     if(score > topScore){
-      topScore = score;}
+      topScore = score;
+  
+    }
+    correctIncorrect.textContent = "Correct Answer!";
+    correctIncorrect.classList.add("correct");
+    setTimeout(function () {
+      correctIncorrect.classList.remove("correct");
+    },300);
 
-    this.setState({ friends: shuffle(friends) });
-
-    
-  }
+    this.setState({ friends: shuffleCards(friends) });
+    }
 
 
   };
@@ -80,10 +130,10 @@ class App extends Component {
       <Wrapper>
         <Nav>        
           <ul>
-            <li>
-                Clicky Game
+            <li className="navInstructions" onClick={navInstructions}>
+                Instructions
             </li>
-            <li>
+            <li className="correctIncorrect">
                 Click on an image to Begin!
             </li>
             <li>
@@ -91,11 +141,15 @@ class App extends Component {
             </li>
         </ul>
         </Nav>
-        <Title>Friends List</Title>
+        <Title>
+          <h2 className="hide" onClick={hide}>
+            Hide
+          </h2>
+        </Title>
         <CardConatainer>
         {this.state.friends.map(friend => (
           <FriendCard
-            removeFriend={this.removeFriend}
+            gamePlay={this.gamePlay}
             id={friend.id}
             key={friend.id}
   
@@ -104,6 +158,7 @@ class App extends Component {
           />
         ))}
         </CardConatainer>
+        <Footer />
     </Wrapper>
     );
   }

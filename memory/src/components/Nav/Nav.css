@@ -1,11 +1,12 @@
 .nav {
     width: 100%;
-    background-color: orange;
+    background-color: black;
     padding: 2rem;
     box-shadow: 0 0 0.8125rem rgba(0, 0, 0, 0.75);
     position: fixed;
     z-index: 99;
     font-size: calc(10px + 14 * (100vw - 320px)/ 800);
+    color: white;
 
 }
 
@@ -13,12 +14,46 @@ ul {
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: space-around
-  }
+}
 
-  .navbar li {
-    display: inline-block;
-    padding: 26px 0;
+.nav li {
+
     width: 33.3%;
     text-align: center;
 }
+
+.correct {
+    animation-duration: .4s;
+    animation-name: correct;
+}
+
+
+@keyframes correct {
+    from {
+        color: white;
+    }
+
+    to {
+        color: green;
+    }
+}
+
+.incorrect {
+    animation-duration: .4s;
+    animation-name: incorrect;
+}
+
+@keyframes incorrect {
+    from {
+        color: white;
+    }
+
+    to {
+        color: red;
+    }
+}
+
+.navInstructions:hover {
+    cursor: pointer;
+    color: goldenrod !important;
+  }
